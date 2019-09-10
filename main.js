@@ -66,3 +66,26 @@ prasanth.decrement()
 prasanth.decrement()
 prasanth
 // output is {name: "prasanth", score: 6}
+
+// using this 
+function createUser(name,score = 0){
+    var obj = Object.create({
+        increment: function(){return this.score++},
+        decrement: function() {return this.score--}
+    });
+    obj.name = name;
+    obj.score = score;
+    return obj;
+}
+var prasanth = createUser("prasanth",5);
+prasanth
+// output is {name: "prasanth", score: 5}
+prasanth.increment()
+prasanth.increment()
+prasanth.increment()
+prasanth.increment()
+prasanth.decrement()
+prasanth.decrement()
+prasanth.decrement()
+prasanth
+// output is {name: "prasanth", score: 6}
