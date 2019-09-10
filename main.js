@@ -111,7 +111,7 @@ sam
 // output is {name: "sam", username: "radha", balance: 0, changename: ƒ, incrementBalance: ƒ, …}
 sam.changename("krishna")
 sam
-// output is {name: "krishna", username: "radha", balance: 3, changename: ƒ, incrementBalance: ƒ, …}
+// output is {name: "krishna", username: "radha", balance: 0, changename: ƒ, incrementBalance: ƒ, …}
 sam.incrementBalance()
 sam.incrementBalance()
 sam.incrementBalance()
@@ -122,3 +122,33 @@ sam
 sam.changeusername("mukunda")
 sam
 // output is {name: "krishna", username: "mukunda", balance: 3, changename: ƒ, incrementBalance: ƒ, …}
+
+
+// using dunder proto
+function userAccount(name,username,balance = 0){
+    var accountDetails = {};
+    accountDetails.name = name;
+    accountDetails.username = username;
+    accountDetails.balance = balance;
+    accountDetails.__proto__.changename = (changename) => {return accountDetails.name = changename};
+    accountDetails.__proto__.incrementBalance = () => {return accountDetails.balance++};
+    accountDetails.__proto__.decrementBalance = () => {return accountDetails.balance--};
+    accountDetails.__proto__.changeusername = (changeusername) => {return accountDetails.username = changeusername};
+    return accountDetails;
+}
+var sam = userAccount("sam","radha")
+sam
+// output is {name: "sam", username: "radha", balance: 0}
+sam.changename("krishna")
+sam
+// output is {name: "krishna", username: "radha", balance: 0}
+sam.incrementBalance()
+sam.incrementBalance()
+sam.incrementBalance()
+sam.incrementBalance()
+sam.decrementBalance()
+sam
+// output is {name: "krishna", username: "radha", balance: 3}
+sam.changeusername("mukunda")
+sam
+// output is {name: "krishna", username: "mukunda", balance: 3}
