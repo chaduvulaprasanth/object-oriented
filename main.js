@@ -124,6 +124,7 @@ sam
 // output is {name: "krishna", username: "mukunda", balance: 3, changename: ƒ, incrementBalance: ƒ, …}
 
 
+
 // using dunder proto
 function userAccount(name,username,balance = 0){
     var accountDetails = {};
@@ -134,6 +135,40 @@ function userAccount(name,username,balance = 0){
     accountDetails.__proto__.incrementBalance = () => {return accountDetails.balance++};
     accountDetails.__proto__.decrementBalance = () => {return accountDetails.balance--};
     accountDetails.__proto__.changeusername = (changeusername) => {return accountDetails.username = changeusername};
+    return accountDetails;
+}
+var sam = userAccount("sam","radha")
+sam
+// output is {name: "sam", username: "radha", balance: 0}
+sam.changename("krishna")
+sam
+// output is {name: "krishna", username: "radha", balance: 0}
+sam.incrementBalance()
+sam.incrementBalance()
+sam.incrementBalance()
+sam.incrementBalance()
+sam.decrementBalance()
+sam
+// output is {name: "krishna", username: "radha", balance: 3}
+sam.changeusername("mukunda")
+sam
+// output is {name: "krishna", username: "mukunda", balance: 3}
+
+
+
+// using Object.create
+function userAccount(name,username,balance = 0){
+    var accountDetails = Object.create(
+        {
+            changename: (changename) => {return accountDetails.name = changename},
+            incrementBalance: () => {return accountDetails.balance++},
+            decrementBalance: () => {return accountDetails.balance--},
+            changeusername: (changeusername) => {return accountDetails.username = changeusername},
+          
+        });
+    accountDetails.name = name;
+    accountDetails.username = username;
+    accountDetails.balance = balance;
     return accountDetails;
 }
 var sam = userAccount("sam","radha")
