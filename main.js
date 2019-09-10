@@ -187,3 +187,37 @@ sam
 sam.changeusername("mukunda")
 sam
 // output is {name: "krishna", username: "mukunda", balance: 3}
+
+
+
+// using this
+function userAccount(name,username,balance = 0){
+    var accountDetails = Object.create(
+        {
+            changename: function(changename){return accountDetails.name = changename},
+            incrementBalance: function(){return accountDetails.balance++},
+            decrementBalance: function(){return accountDetails.balance--},
+            changeusername: function(changeusername){return accountDetails.username = changeusername},
+          
+        });
+    accountDetails.name = name;
+    accountDetails.username = username;
+    accountDetails.balance = balance;
+    return accountDetails;
+}
+var sam = userAccount("sam","radha")
+sam
+// output is {name: "sam", username: "radha", balance: 0}
+sam.changename("krishna")
+sam
+// output is {name: "krishna", username: "radha", balance: 0}
+sam.incrementBalance()
+sam.incrementBalance()
+sam.incrementBalance()
+sam.incrementBalance()
+sam.decrementBalance()
+sam
+// output is {name: "krishna", username: "radha", balance: 3}
+sam.changeusername("mukunda")
+sam
+// output is {name: "krishna", username: "mukunda", balance: 3}
