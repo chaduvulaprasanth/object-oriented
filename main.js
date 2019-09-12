@@ -221,3 +221,27 @@ sam
 sam.changeusername("mukunda")
 sam
 // output is {name: "krishna", username: "mukunda", balance: 3}
+
+
+// creating protytpal 
+var obj = {
+    getUsername: function(){return this.username},
+    getPassword: function(){return this.password},
+    getProjects: function(){return this.noOfProjects},
+    changeUsername: function(changename){return this.username = changename},
+    changePassword: function(changepassword){return this.password = changepassword},
+    incrementProject: function(){return this.noOfProjects++},
+    decrementProject: function (){return this.noOfProjects--}
+}
+function user(name,id,password,noOfProjects){
+    var userobj = Object.create(obj);
+    userobj.username = name;
+    userobj.id = id;
+    userobj.password = password;
+    userobj.noOfProjects = noOfProjects;
+    
+    return userobj;
+}
+
+
+
