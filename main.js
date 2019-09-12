@@ -244,4 +244,17 @@ function user(name,id,password,noOfProjects){
 }
 
 
-
+// pseudoclassicaltype
+function user(name,id,password,noOfProjects){
+    this.username = name;
+    this.id = id;
+    this.password = password;
+    this.noOfProjects = noOfProjects;
+}
+user.prototype.getUsername = function(){return this.username};
+user.prototype.getPassword = function(){return this.password};
+user.prototype.getProjects = function(){return this.noOfProjects};
+user.prototype.changeUsername = function(changename){return this.username = changename};
+user.prototype.changePassword = function(changepassword){return this.password = changepassword};
+user.prototype.incrementProject = function(){return this.noOfProjects++};
+user.prototype.decrementProject = function (){return this.noOfProjects--};
