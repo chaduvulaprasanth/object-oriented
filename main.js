@@ -258,3 +258,37 @@ user.prototype.changeUsername = function(changename){return this.username = chan
 user.prototype.changePassword = function(changepassword){return this.password = changepassword};
 user.prototype.incrementProject = function(){return this.noOfProjects++};
 user.prototype.decrementProject = function (){return this.noOfProjects--};
+
+
+
+// class
+class User {
+    constructor(name,id,password,noOfProjects = 0){
+        this.username = name;
+        this.id = id;
+        this.password = password;
+        this.noOfProjects = noOfProjects;
+    }
+    getUsername(){
+        return this.username;
+    }
+    getPassword(){
+        return this.password;
+    }
+    getProjects(){
+        return this.noOfProjects;
+    }
+    changeUsername(changename){
+        return this.username = changename;
+    }
+    changePassword(changepassword){
+        return this.password = changepassword;
+    }
+    incrementProject(){
+        return this.noOfProjects++;
+    }
+    decrementProject(){
+        return this.noOfProjects--;
+    }
+
+}
